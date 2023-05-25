@@ -1,19 +1,40 @@
-
-class Rectangle {
-
-  // A constructor, to give initial arguments.
-  constructor(height, width) {
-
-    // We can define attributes stored on the instance with `this`
-    this.height = height;
-    this.width = width;
+class User {
+  constructor(name) {
+    this.name = name;
   }
-
-  // A method.
-  getArea() {
-    return this.height * this.width;
+  getName() {
+    return this.name;
+  }
+  getIntroduction() {
+    return `Hey! My name is ${this.name}`
   }
 }
-
-// Export the class
-module.exports = Rectangle;
+const users = [
+  new User('Uma'),
+  new User('Josh'),
+  new User('Ollie')
+];
+class UserBase {  
+  
+  constructor(users) {
+  this.users = users;
+  }
+  count() {
+    return this.users.length;
+  }
+  getNames() {
+    this.users.forEach(user => {
+      console.log(user.getName());
+  });
+}
+  getIntroduction() {
+    this.users.forEach(user => {
+      'Hey my name is ' + user.getName();
+  });
+  }
+}
+let base = new UserBase(users);
+console.log(base.count())
+console.log(base.getNames())
+console.log(base.getIntroduction())
+module.exports = User;
